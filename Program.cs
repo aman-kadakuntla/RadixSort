@@ -11,12 +11,15 @@ namespace Radix_Sort
         static void RadixSort(int[] arr)
         {
             int MaxLength = 0;
+            //loop to find the maxlength of the largest number
             foreach(int i in arr)
             {
                 MaxLength = Math.Max(MaxLength, i.ToString().Length);
             }
+            //create an string array of size same as input array
             string[] strArray = new string[arr.Length];
             //Console.WriteLine(string.Join(" ", arr));
+            // loops that makes the each digit length in the input array equal to maxlength by adding 0 to left side
             for(int i=0;i<arr.Length;i++)
             {
                 string s = arr[i].ToString();
@@ -30,7 +33,7 @@ namespace Radix_Sort
                 strArray[i] = s;
             }
             //Console.WriteLine(string.Join(" ", strArray));
-            Dictionary<char, List<string>> dict = new Dictionary<char, List<string>>();
+            Dictionary<char, List<string>> dict = new Dictionary<char, List<string>>();//to implement the buckets
             for(int i=MaxLength-1;i>=0;i--)
             {
                 for (int i1 = 0; i1 < 10; i1++)
